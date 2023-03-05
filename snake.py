@@ -20,6 +20,20 @@ class Snake:
             self.start_x -= 20
             self.segments.append(new_turtle)
 
+    def grow(self):
+        new_turtle = Turtle(shape="square")
+        new_turtle.penup()
+        new_turtle.color("white")
+        tail_position = self.segments[-1].pos()
+        new_turtle.goto(tail_position)
+        self.segments.append(new_turtle)
+
+    def collision(self):
+        for segment in self.segments[1:]:
+            if self.head.distance(segment) < 10:
+                return True
+        return False
+
     def move(self):
         for n in range(len(self.segments) - 1, 0, -1):
             position = self.segments[n - 1].pos()
