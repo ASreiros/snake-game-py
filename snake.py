@@ -34,6 +34,14 @@ class Snake:
                 return True
         return False
 
+    def reset(self):
+        for segment in self.segments:
+            segment.hideturtle()
+        self.start_x = 0
+        self.start_y = 0
+        self.segments = []
+        self.create_snake()
+        self.head = self.segments[0]
     def move(self):
         for n in range(len(self.segments) - 1, 0, -1):
             position = self.segments[n - 1].pos()

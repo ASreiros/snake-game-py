@@ -33,11 +33,16 @@ while game_is_on:
         scoreboard.new_score()
 
     if snake.head.xcor() > 270 or snake.head.xcor() < -270 or snake.head.ycor() > 270 or snake.head.ycor() < -270:
-        game_is_on = False
-        game.over()
+        snake.reset()
+        scoreboard.reset_score()
+        food.reset_food()
+        time.sleep(1)
 
     if snake.collision():
-        game_is_on = False
-        game.over()
+        snake.reset()
+        scoreboard.reset_score()
+        food.reset_food()
+        time.sleep(1)
+
 
 screen.exitonclick()
